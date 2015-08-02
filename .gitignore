@@ -1,0 +1,5 @@
+.DS_Store
+Thumbs.db
+bower_components
+elm-stuff
+Polymer.js

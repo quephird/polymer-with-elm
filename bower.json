@@ -1,0 +1,24 @@
+{
+  "name": "play",
+  "version": "0.0.0",
+  "description": "Playing with Polymer",
+  "main": "Polymer.js",
+  "moduleType": [
+    "es6"
+  ],
+  "authors": [
+    "danielle kefford"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5",
+    "paper-checkbox": "Polymer/paper-checkbox#^0.5"
+  }
+}
