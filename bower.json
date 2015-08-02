@@ -18,7 +18,8 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^0.5",
-    "paper-checkbox": "Polymer/paper-checkbox#^0.5"
+    "polymer": "Polymer/polymer#^1.0",
+    "paper-checkbox": "PolymerElements/paper-checkbox",
+    "webcomponentsjs": "webcomponents/webcomponentsjs"
   }
 }
