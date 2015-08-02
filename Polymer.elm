@@ -1,7 +1,7 @@
 module Polymer where
 
-import Html exposing (..)
-import Html.Attributes exposing (..)
+import Html exposing (Html, div, node, text)
+import Html.Attributes exposing (checked, class)
 import List exposing (map, foldr)
 
 paperCheckbox : String -> List Html
