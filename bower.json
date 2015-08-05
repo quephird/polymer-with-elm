@@ -20,6 +20,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.0",
     "paper-checkbox": "PolymerElements/paper-checkbox",
-    "webcomponentsjs": "webcomponents/webcomponentsjs"
+    "webcomponentsjs": "webcomponents/webcomponentsjs",
+    "google-chart": "GoogleWebComponents/google-chart#~1.0.2"
   }
 }

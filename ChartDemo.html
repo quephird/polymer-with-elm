@@ -3,13 +3,19 @@
     <title>Hello, Polymer from Elm!!!</title>
     <script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
     <link rel="import" href="../bower_components/polymer/polymer.html">
-    <link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+    <link rel="import" href="../bower_components/google-chart/google-chart.html">
+    <style>
+      google-chart {
+        height: 300px;
+        width: 50em;
+      }
+    </style>
   </head>
 
   <body>
-    <script src="Polymer.js"></script>
+    <script src="Main.js"></script>
     <script>
-      Elm.fullscreen(Elm.Polymer);
+      Elm.fullscreen(Elm.Main);
     </script>
   </body>
 </html>
