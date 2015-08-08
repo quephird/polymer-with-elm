@@ -1,3 +1,5 @@
+## Setting up a new Elm project to use Polymer 
+
 The steps for using Polymer components in an Elm app are:
 
 * Initialize project to use bower
@@ -47,3 +49,35 @@ The steps for using Polymer components in an Elm app are:
       .
       .
       .
+
+## How to just get this example running
+
+If you just want to run the example HTML file, do the following:
+
+* Clone this repo
+
+      git clone https://github.com/quephird/polymer-with-elm
+      
+  ... and move into the new directory.
+
+* Run Bower to get dependencies
+
+  You need to have Bower first, which in turn requires node.js and NPM. See the directions on obtaining both [here](https://nodejs.org/download/) and [here](http://bower.io/#install-bower)
+  
+  Once you have them, run this from within the project directory:
+  
+      bower update
+
+* Run an HTTP server
+
+  Because the Polymer dependencies require local HTML includes, you will need to run an actual HTTP server versus simply opening the file directly in a browser. (You can see the details of this [here](https://github.com/Polymer/polymer/issues/1535) if you like.)
+  
+  If you don't already have a Web server at all or want to avoid having to go through a lot of ceremony spinning and setting up one, you can use this one-liner:
+  
+      python -m SimpleHTTPServer
+      
+  This of course means you need Python to begin with; you can go [here](https://www.python.org/downloads/) for details on how to install that.
+
+* Point your browser to the local HTML page
+
+  Now you're finally ready to run the example; simply point your browser [here](htto://localhost:8000/ChartDemo.html) and you should see a nice pie chart!
