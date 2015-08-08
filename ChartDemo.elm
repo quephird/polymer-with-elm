@@ -1,11 +1,11 @@
-module Main where
+module ChartDemo where
 
-import Polymer exposing (GoogleChart(..), render)
+import Polymer exposing (GoogleChart(..), pieChartDefaults, render)
 
 main =
-  let tuples = [ ("foo", 10), ("bar", 30), ("baz", 25) ]
+  let data = [ ("Germany", 10), ("United States", 30), ("France", 25) ]
       labels = ("Category", "Count")
       title  = "Xyzzy"
-      newChart = PieChart title labels tuples
+      newChart = PieChart data labels pieChartDefaults
   in
     render newChart
