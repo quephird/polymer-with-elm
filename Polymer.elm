@@ -1,4 +1,4 @@
-module Polymer (GoogleChart(..), PieChartOptions, pieChartDefaults, render) where
+module Polymer (GoogleChart(..), PieChartOptions, pieChartDefaults, render, toOffsetsString) where
 
 import Html exposing (Html, div, node, text)
 import Html.Attributes exposing (attribute, checked, class)
@@ -7,40 +7,34 @@ import String exposing (join, toLower)
 
 type alias Title = String
 type alias Labels = (String, String)
-type alias DataTuple = (String, Int)
-type alias Data = List DataTuple
-
-type ChartType = Area
-               | Bar
-               | Bubble
-               | Candlestick
-               | Column
-               | Combo
-               | Geo
-               | Histogram
-               | Line
-               | Pie
-               | Scatter
-               | SteppedArea
+type alias Data = List (String, Int)
+type alias SliceOffsets = List (Int, Float)
 
 type alias PieChartOptions =
   { title : String
   , is3D : Bool
   , pieHole : Float
   , pieStartAngle : Int
+  , sliceOffsets : List (Int, Float)
   }
-
---type GoogleChartOptions = PieChartOptions
 
 type GoogleChart = PieChart Data Labels PieChartOptions
 
 pieChartDefaults : PieChartOptions
-pieChartDefaults = PieChartOptions "" False 0.0 0
+pieChartDefaults = PieChartOptions "" False 0.0 0 []
+
+toOffsetsString : SliceOffsets -> String
+toOffsetsString offsets =
+  join ", " <| map (\(i,o) -> "\"" ++ toString i ++ "\": {\"offset\": " ++ toString o ++ "}") offsets
 
 toOptionsString : PieChartOptions -> String
-toOptionsString {title, is3D} =
-                   "{\"title\": \"" ++ title ++ "\", " ++
-                   "\"is3D\": false}"
+toOptionsString {title, is3D, pieHole, pieStartAngle, sliceOffsets} =
+                   "{\"title\": \"" ++ title ++ "\", "
+                   ++ "\"is3D\": " ++ (toLower <| toString is3D) ++ ", "
+                   ++ "\"pieHole\": " ++ toString pieHole ++ ", "
+                   ++ "\"pieStartAngle\": " ++ toString pieStartAngle ++ ", "
+                   ++ "\"slices\": { " ++ toOffsetsString sliceOffsets ++ "}"
+                   ++ "}"
 
 toDataString : (String, String) -> List (String, Int) -> String
 toDataString (xLabel, yLabel) tuples =
