@@ -56,7 +56,7 @@ If you just want to run the example HTML file, do the following:
 
 * Clone this repo
 
-      git clone https://github.com/quephird/polymer-with-elm
+        git clone https://github.com/quephird/polymer-with-elm
       
   ... and move into the new directory.
 
@@ -66,7 +66,26 @@ If you just want to run the example HTML file, do the following:
   
   Once you have them, run this from within the project directory:
   
-      bower update
+      bower install
+
+* Compile the Elm code
+
+  Run the following:
+
+      elm-make ChartDemo.elm --output ChartDemo.js
+
+  The first time you ever run this, you'll get something like the following:
+
+      Some new packages are needed. Here is the upgrade plan.
+	
+	  Install:
+	    elm-lang/core 2.1.0
+	    evancz/elm-html 4.0.1
+	    evancz/virtual-dom 2.0.0
+	
+      Do you approve of this plan? (y/n)
+
+  Type 'y', wait for those packages to be downloaded and for the code to be successfully compiled.
 
 * Run an HTTP server
 
@@ -78,6 +97,6 @@ If you just want to run the example HTML file, do the following:
       
   This of course means you need Python to begin with; you can go [here](https://www.python.org/downloads/) for details on how to install that.
 
-* Point your browser to the local HTML page
+* Point your browser to the demo HTML page
 
-  Now you're finally ready to run the example; simply point your browser [here](htto://localhost:8000/ChartDemo.html) and you should see a nice pie chart!
+  Now you're finally ready to run the example; simply point your browser [htto://localhost:8000/ChartDemo.html](htto://localhost:8000/ChartDemo.html) and you should see a nice pie chart!
