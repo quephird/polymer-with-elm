@@ -15,7 +15,7 @@ The steps for using Polymer components in an Elm app are:
         bower install --save Polymer/paper-checkbox
 
 * ##### Include Polymer JavaScript and HTML files, as well as the
-  HTML file for the component(s) you're using, in your main HTML file
+  HTML file for the component(s) you're using, in your main HTML file; for instance, if you want the paper-checkbox component, you'd include the following:
 
 		<script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
 		<link rel="import" href="../bower_components/polymer/polymer.html">
