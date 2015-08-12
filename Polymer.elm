@@ -1,4 +1,4 @@
-module Polymer (GoogleChart(..), PieChartOptions, pieChartDefaults, render) where
+module Polymer (GoogleChart(..), PieChartOptions, SliceColor(..), pieChartDefaults, render, sliceDefaults, SliceOptions) where
 
 import Html exposing (Html, div, node, text)
 import Html.Attributes exposing (attribute, checked, class)
@@ -12,21 +12,40 @@ type alias Title = String
 type alias Is3D = Bool
 type alias PieHole = Float
 type alias PieStartAngle = Int
-type alias SliceOffsets = List (Int, Float)
+
+type SliceColor
+  = DefaultColor
+  | Color String
+
+toColorString : SliceColor -> String
+toColorString color =
+  case color of
+    DefaultColor -> "null"
+    Color c      -> "\"" ++ c ++ "\""
+
+type alias SliceOptions =
+  { offset : Float
+  , color : SliceColor
+  }
+
+sliceDefaults : SliceOptions
+sliceDefaults = SliceOptions 0.0 DefaultColor
+
+type alias Slices = List (Int, SliceOptions)
 
 type PieChartOption
   = Title' Title
   | Is3D' Is3D
   | PieHole' PieHole
   | PieStartAngle' PieStartAngle
-  | SliceOffsets' SliceOffsets
+  | Slices' Slices
 
 type alias PieChartOptions =
   { title : Title
   , is3D : Is3D
   , pieHole : PieHole
   , pieStartAngle : PieStartAngle
-  , sliceOffsets : SliceOffsets
+  , slices : Slices
   }
 
 type GoogleChart = PieChart Data Labels PieChartOptions
@@ -45,19 +64,21 @@ toJson option =
       "\"pieHole\": " ++ toString h
     PieStartAngle' a ->
       "\"pieStartAngle\": " ++ toString a
-    SliceOffsets' os ->
+    Slices' ss ->
       "\"slices\": { " ++
-      (join ", " <| map (\(i,o) -> "\"" ++ toString i ++ "\": {\"offset\": " ++ toString o ++ "}") os) ++
+      (join ", " <| map (\(i,{ offset, color }) -> "\"" ++ toString i ++ "\": " ++
+                                                   "{\"offset\": " ++ toString offset ++
+                                                   ", \"color\": " ++ toColorString color ++ "}") ss) ++
       "}"
 
 toOptionsString : PieChartOptions -> String
-toOptionsString {title, is3D, pieHole, pieStartAngle, sliceOffsets} =
+toOptionsString {title, is3D, pieHole, pieStartAngle, slices} =
   "{" ++
   (join ", " <| map toJson [Title' title,
                             Is3D' is3D,
                             PieHole' pieHole,
                             PieStartAngle' pieStartAngle,
-                            SliceOffsets' sliceOffsets]) ++
+                            Slices' slices]) ++
   "}"
 
 toDataString : (String, String) -> List (String, Int) -> String
