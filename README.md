@@ -14,19 +14,13 @@ The steps for using Polymer components in an Elm app are:
 
         bower install --save Polymer/paper-checkbox
 
-* ##### Include Polymer JavaScript and HTML files, as well as the
-  HTML file for the component(s) you're using, in your main HTML file; for instance, if you want the paper-checkbox component, you'd include the following:
-
-		<script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
-		<link rel="import" href="../bower_components/polymer/polymer.html">
-		<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
-
 * ##### Install the elm-html package
 
 	    elm-package install evancz/elm-html
 
-* ##### Actually use a Polymer component in your Elm file;
-  since they're HTML5 custom tags, use elm-html's node function
+* ##### Actually use a Polymer component in your Elm file
+  
+  Polymer components are HTML5 custom tags, so you can use elm-html's node function to generate them, like so:
 
       .
       .
@@ -35,9 +29,18 @@ The steps for using Polymer components in an Elm app are:
       .
       .
       .
+* ##### Include Polymer JavaScript and HTML files
 
-* ##### In your main HTML file, include the following JavaScript to load
-  your transpiled Elm file.
+	Your main HTML file should look something like below; for instance, if you want the paper-checkbox component, you'd have the following includes:
+
+		<script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+		<link rel="import" href="../bower_components/polymer/polymer.html">
+		<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+
+
+* ##### Include transpiled JavaScript
+
+  In this example, the name of the transpiled file is Polymer.js and it is rendered fullscreen in the browser:
 
       .
       .
