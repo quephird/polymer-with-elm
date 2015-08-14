@@ -71,35 +71,23 @@ If you just want to run the example HTML file, do the following:
   
       bower install
 
-* ##### Compile the Elm code
+* ##### Run elm-reactor
 
   Run the following:
 
-      elm-make ChartDemo.elm --output ChartDemo.js
+      elm-reactor
 
-  The first time you ever run this, you'll get something like the following:
-
-      Some new packages are needed. Here is the upgrade plan.
-	
-	  Install:
-	    elm-lang/core 2.1.0
-	    evancz/elm-html 4.0.1
-	    evancz/virtual-dom 2.0.0
-	
-      Do you approve of this plan? (y/n)
-
-  Type 'y', wait for those packages to be downloaded and for the code to be successfully compiled.
-
-* ##### Run an HTTP server
-
-  Because the Polymer dependencies require local HTML includes, you will need to run an actual HTTP server versus simply opening the file directly in a browser. (You can see the details of this [here](https://github.com/Polymer/polymer/issues/1535) if you like.)
+  You should see something like this:
   
-  If you don't already have a Web server at all or want to avoid having to go through a lot of ceremony spinning and setting up one, you can use this one-liner:
+	  danielles-MacBook-Pro:polymer-with-elm danielle$ elm-reactor
+	  Elm Reactor 0.3.2 (Elm Platform 0.15.1)
+	  Listening on http://0.0.0.0:8000/
+
+* ##### Point your browser to localhost
+
+  Now you're finally ready to run the example; simply point your browser [htto://localhost:8000](htto://localhost:8000) and you should see a directory listing. Doubleclick on the src directory, then Polymer, then ChartDemo.elm. That should trigger compilation of all Elm files needed for the demo. (You could of course just run the following command to accomplish the same:)
   
-      python -m SimpleHTTPServer
-      
-  This of course means you need Python to begin with; you can go [here](https://www.python.org/downloads/) for details on how to install that.
-
-* ##### Point your browser to the demo HTML page
-
-  Now you're finally ready to run the example; simply point your browser [htto://localhost:8000/ChartDemo.html](htto://localhost:8000/ChartDemo.html) and you should see a nice pie chart!
+	  elm-make ./src/Polymer/ChartDemo.elm
+	  
+  Go back to the main menu and doubleclick on ChartDemo.html, and voilá you should see a bunch of charts.
+  
