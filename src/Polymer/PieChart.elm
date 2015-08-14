@@ -1,4 +1,12 @@
-module Polymer (GoogleChart(..), PieChartOptions, SliceColor(..), pieChartDefaults, render, sliceDefaults, SliceOptions) where
+module Polymer.PieChart ( Data
+                        , Labels
+                        , PieChartOptions
+                        , SliceColor(..)
+                        , SliceOptions
+                        , pieChartDefaults
+                        , sliceDefaults
+                        , toDataString
+                        , toOptionsString) where
 
 import Html exposing (Html, div, node, text)
 import Html.Attributes exposing (attribute, checked, class)
@@ -48,8 +56,6 @@ type alias PieChartOptions =
   , slices : Slices
   }
 
-type GoogleChart = PieChart Data Labels PieChartOptions
-
 pieChartDefaults : PieChartOptions
 pieChartDefaults = PieChartOptions "" False 0.0 0 []
 
@@ -88,15 +94,3 @@ toDataString (xLabel, yLabel) tuples =
       tuplesString = join ", " <| map (\(c,v) -> "[\"" ++ c ++ "\", " ++ (toString v) ++ "]") tuples
   in
       "[" ++ labelsString ++ ", " ++ tuplesString ++ "]"
-
-render : GoogleChart -> Html
-render (PieChart data labels options) =
-  let
-    optionsString = toOptionsString options
-    dataString = toDataString labels data
-    attributes = map (\[n,v] -> attribute n v) [["type", "pie"],
-                                                ["options", optionsString],
-                                                ["data", dataString]]
-    children   = []
-  in
-    node "google-chart" attributes children
