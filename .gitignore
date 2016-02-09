@@ -2,4 +2,4 @@
 Thumbs.db
 bower_components
 elm-stuff
-./*.js
+**.js

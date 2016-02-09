@@ -18,9 +18,9 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.0",
+    "polymer": "Polymer/polymer#1.1.0",
     "paper-checkbox": "PolymerElements/paper-checkbox",
     "webcomponentsjs": "webcomponents/webcomponentsjs",
-    "google-chart": "GoogleWebComponents/google-chart#~1.0.2"
+    "google-chart": "GoogleWebComponents/google-chart#1.0.2"
   }
 }

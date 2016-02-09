@@ -71,6 +71,13 @@ If you just want to run the example HTML file, do the following:
   
       bower install
 
+  UPDATE: The libraries have evolved quite a bit since I last worked on this project and I haven't kept up with the Elm nor Polymer ecosystems. As of this writing (20160208) you will be presented with a set of choices for which version of the
+  polymer dependency you would like:
+  
+  ![](./bower-install.png)
+
+  Choose 1 and continue.
+
 * ##### Run elm-reactor
 
   Run the following:
@@ -85,7 +92,7 @@ If you just want to run the example HTML file, do the following:
 
 * ##### Point your browser to localhost
 
-  Now you're finally ready to run the example; simply point your browser [htto://localhost:8000](htto://localhost:8000) and you should see a directory listing. Doubleclick on the src directory, then Polymer, then ChartDemo.elm. That should trigger compilation of all Elm files needed for the demo. (You could of course just run the following command to accomplish the same:)
+  Now you're finally ready to run the example; simply point your browser [http://localhost:8000](http://localhost:8000) and you should see a directory listing. Doubleclick on the src directory, then Polymer, then ChartDemo.elm. That should trigger compilation of all Elm files needed for the demo. (You could of course just run the following command to accomplish the same:)
   
 	  elm-make ./src/Polymer/ChartDemo.elm
 	  
